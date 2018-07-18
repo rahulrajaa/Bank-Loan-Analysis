@@ -1,0 +1,61 @@
+DISTRIBUTIONAL ANALYSIS
+  
+  The frequency of a particular data value is the number of times the data value occurs. A frequency distribution is a tabular summary 
+  (frequency table) of data showing the frequency number of observations (outcomes) in each of several non-overlapping categories named 
+  classes. The objective is to provide a simple interpretation about the data that cannot be quickly obtained by looking only at the 
+  original raw data.
+  
+  
+  Let's come to code part
+    
+  # D I S T R I B U T I O N A L    A N A L Y S I S
+
+app_inc= df['ApplicantIncome'].hist(bins=50)
+plt.title('Application Income')
+plt.show(app_inc)
+
+app_inc_edu = df.boxplot(column='ApplicantIncome', by = 'Education')
+plt.title('Income Based On Education')
+plt.show(app_inc_edu)
+app_inc_pa = df.boxplot(column='ApplicantIncome', by = 'Property_Area')
+plt.title('Income Based On Living Place')
+plt.show(app_inc_pa)
+app_inc_gen = df.boxplot(column='ApplicantIncome', by = 'Gender')
+plt.title('Income Based On Gender')
+plt.show(app_inc_gen)
+
+ Categorical Analysis
+
+Categorical features can only take on a limited, and usually fixed, number of possible values. For example, if a dataset is about 
+information related to users, then you will typically find features like country, gender, age group, etc. Alternatively, if the data
+you're working with is related to products, you will find features like product type, manufacturer, seller and so on.
+
+
+
+# C A T E G O R I C A L   V A R I A B L E   A N A L Y S I S
+
+temp1 = df['Credit_History'].value_counts(ascending=True)
+temp2 = df.pivot_table(values='Loan_Status',index=['Credit_History'],aggfunc=lambda x: x.map({'Y':1,'N':0}).mean())
+print ('Frequency Table for Credit History:\n',temp1,"\n")
+print ('Probility of getting loan for each Credit History class:\n',temp2,"\n")
+
+fig = plt.figure(figsize=(8,4))
+ax1 = fig.add_subplot(121)
+ax1.set_xlabel('Credit_History')
+ax1.set_ylabel('Count of Applicants')
+ax1.set_title("Applicants by Credit_History")
+temp1.plot(kind='bar')
+plt.show(ax1)
+
+temp2.plot(kind = 'bar')
+ax2 = fig.add_subplot(122)
+ax2.set_xlabel('Credit_History')
+ax2.set_ylabel('Probability of getting loan')
+ax2.set_title("Probability of getting loan by credit history")
+plt.show(ax2)
+
+
+
+
+
+
