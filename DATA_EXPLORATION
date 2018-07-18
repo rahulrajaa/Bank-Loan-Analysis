@@ -1,0 +1,60 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("C:/Users/Rahul/PycharmProjects/LoanDataset/loandataset.csv")  # Reading the dataset in a dataframe using Pandas
+
+                                    # D A T A   E X P L O R A T I O N
+
+Nan = df.fillna("Nan")
+first_ten_rows = df.head(10)
+summary = df.describe()
+area_count = df['Property_Area'].value_counts()
+
+
+print("First Ten Data:\n",first_ten_rows,"\n")
+print("Summary:\n",summary,"\n")
+print("Area Count:\n",area_count,"\n")
+
+
+
+#(i) Using Boolean Indexing
+
+Fem_Data1=df.loc[(df["Gender"]=="Female") & (df["Education"]=="Not Graduate") & (df["Loan_Status"]=="Y"),
+                  ["Gender","Education","Loan_Status"]]
+
+print("Female Non Graduates Who Got Loan\n",Fem_Data1,"\n")
+
+F_S1 =Fem_Data1['Loan_Status'].count()
+
+print("Total Female Non Graduates Who Got Loan\n",F_S1,"\n")
+
+
+Fem_Data2=df.loc[(df["Gender"]=="Female") & (df["Education"]=="Graduate") & (df["Loan_Status"]=="Y"),
+                  ["Gender","Education","Loan_Status"]]
+F_S2 =Fem_Data2['Loan_Status'].count()
+print("Total Female Graduates Who Got Loan\n",F_S2,"\n")
+
+Mal_Data1=df.loc[(df["Gender"]=="Male") & (df["Education"]=="Not Graduate") & (df["Loan_Status"]=="Y"),
+                  ["Gender","Education","Loan_Status"]]
+M_S1=Mal_Data1['Loan_Status'].count()
+
+print("Total Male Non Graduates Who Got Loan\n",M_S1,"\n")
+
+Mal_Data2=df.loc[(df["Gender"]=="Male") & (df["Education"]=="Graduate") & (df["Loan_Status"]=="Y"),
+                  ["Gender","Education","Loan_Status"]]
+
+M_S2 =Mal_Data2['Loan_Status'].count()
+print("Total Male Graduates Who Got Loan\n",M_S2,"\n")
+
+
+#(ii)Using Function Creation
+def num_missing(x):
+  return sum(x.isnull())
+
+
+M_C = df.apply(num_missing, axis=0)
+print ("Missing values per column:\n", M_C,"\n")
+
+M_R = df.apply(num_missing, axis=1).head()
+print ("Missing values per row:\n", M_R,"\n")
