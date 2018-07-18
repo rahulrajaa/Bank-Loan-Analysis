@@ -1,3 +1,22 @@
+Project Title : Analysis of Bank Loan Approvement
+
+With the total number of applicants applied for bank loan and their financial background including the current loan
+status dataset the analysis is performed prediction of loan approvement from a bank correlating to examine the volume
+and the amount of issued loans.
+
+Language and Technologies : Python , Pandas Library , Matplotlib Library,NumPy Library.
+
+Tools Used: Pycharm.
+
+Step 1:
+
+Data Exploration is the first step to be done before the project to be created. Data exploration, cleaning and preparation can 
+take maximum of your total project time.But it helps your project to get clear and accurate analysis.First, identify Predictor 
+(Input) and Target (output) variables. Next, identify the data type and category of the variables. Let’s look at these methods and 
+statistical measures for categorical and continuous variables individually.
+
+Let's move to code....
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
