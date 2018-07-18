@@ -54,13 +54,6 @@ ax2.set_ylabel('Probability of getting loan')
 ax2.set_title("Probability of getting loan by credit history")
 plt.show(ax2)
 
-temp2.plot(kind = 'bar')
-ax2 = fig.add_subplot(122)
-ax2.set_xlabel('Credit_History')
-ax2.set_ylabel('Probability of getting loan')
-ax2.set_title("Probability of getting loan by credit history")
-plt.show(ax2)
-
 temp3 = pd.crosstab(df['Credit_History'], df['Loan_Status'])
 b1=temp3.plot(kind='bar', stacked=True, color=['red','blue'], grid=False)
 plt.show(b1)
@@ -68,8 +61,3 @@ plt.show(b1)
 temp4 = pd.crosstab(df['Gender'], df['Loan_Status'])
 b2=temp4.plot(kind='bar', stacked=True, color=['red','blue'], grid=False)
 plt.show(b2)
-
-
-
-
-
